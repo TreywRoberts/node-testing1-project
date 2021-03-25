@@ -8,6 +8,10 @@
  */
 function trimProperties(obj) {
   // ✨ implement
+  return Object.keys(obj).reduce((acc, curr) => {
+    acc[curr] = obj[curr].trim()
+    return acc;
+  }, {});
 }
 
 /**
@@ -32,7 +36,10 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
+  return Math.max.apply(null, integers)
 }
+
+
 
 class Counter {
   /**
@@ -40,7 +47,7 @@ class Counter {
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
-    // ✨ initialize whatever properties are needed
+    this.count = initialNumber + 1
   }
 
   /**
@@ -56,9 +63,14 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    // ✨ implement
+    if(this.count === 0){
+      return this.count
+    } else {
+      return this.count -= 1
+    }
   }
 }
+console.log(new Counter(3).countDown())
 
 class Seasons {
   /**
@@ -94,7 +106,10 @@ class Car {
    */
   constructor(name, tankSize, mpg) {
     this.odometer = 0 // car initilizes with zero miles
-    this.tank = tankSize // car initiazes full of gas
+    this.name = name
+    this.tank = tankSize
+    this.mpg = mpg
+    // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
   }
 
@@ -112,7 +127,8 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
-    // ✨ implement
+    this.odometer += distance
+    this.tankSize -= this.mpg
   }
 
   /**
@@ -152,7 +168,15 @@ class Car {
  */
 function isEvenNumberAsync(number) {
   // ✨ implement
+  if(number % 2 === 0 ){
+    return true
+  } else if(typeof(number) !== 'number'){
+    return "number must be a number"
+  } else { 
+    return false
+  }
 }
+console.log(isEvenNumberAsync(3))
 
 module.exports = {
   trimProperties,
