@@ -1,4 +1,4 @@
-const utils = require('./index')
+const utils = require('./index') 
 
 describe('[Exercise 1] trimProperties', () => {
   it('[1] returns an object with the properties trimmed', () => {
@@ -10,6 +10,10 @@ describe('[Exercise 1] trimProperties', () => {
   })
   it('[2] returns a copy, leaving the original object intact', () => {
     // ✨ test away
+    const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
+    const expected = { foo: 'foo', bar: 'bar', baz: 'baz' }
+    const actual = utils.trimProperties(input)
+    expect(actual).not.toEqual(input)
   })
 })
 
@@ -25,6 +29,10 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
 describe('[Exercise 3] findLargestInteger', () => {
   it('[5] returns the largest number in an array of numbers', () => {
     // ✨ test away
+    const input = [1,5,3,6,8,9]
+    const expected = 9
+    const actual = utils.findLargestInteger(input)
+    expect(actual).toBe(expected)
   })
 })
 
@@ -35,12 +43,20 @@ describe('[Exercise 4] Counter', () => {
   })
   it('[6] the FIRST CALL of counter.countDown returns the initial count', () => {
     // ✨ test away
+    expect(counter.countDown()).toBe(3)
   })
   it('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {
     // ✨ test away
+    counter.countDown()
+    expect(counter.countDown()).toBe(2)
   })
   it('[8] the count eventually reaches zero but does not go below zero', () => {
     // ✨ test away
+    counter.countDown()
+    counter.countDown()
+    counter.countDown()
+    counter.countDown()
+    expect(counter.countDown()).toBe(0)
   })
 })
 
